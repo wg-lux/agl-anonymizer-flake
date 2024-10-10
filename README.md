@@ -1,15 +1,14 @@
 # AGL Anonymizer
 
-AGL Anonymizer is a Django-based API that interacts with the AGL Anonymizer Pipeline to provide comprehensive image processing capabilities, specifically for anonymizing sensitive information using common German names, blurring, and OCR (Optical Character Recognition). This API is designed to facilitate the seamless integration of anonymization functionalities into various applications, ensuring privacy and compliance with data protection regulations.
+AGL Anonymizer is a Django-based API that interacts with the AGL Anonymizer Pipeline. This API is designed to facilitate the seamless integration of the anonymization functionalities in agl_anonymizer_pipeline into new applications, ensuring privacy and compliance with data protection regulations.
 
 ## Features of the pipeline
 
-- **Text Detection and Anonymization**: Leverages advanced OCR techniques to detect and anonymize text within images, safeguarding sensitive information.
-- **Blurring Functionality**: Includes customizable blurring options to obscure specific areas of an image, enhancing privacy.
-- **Image Saving**: Efficiently saves processed images in the desired format while maintaining high-quality output.
-- **Extensive Format Support**: Capable of handling various image and document formats for diverse applications.
-- Pdf,
-- 
+- **Text Pseudonymization Interface**
+- **Sending And Recieving Data**
+- **Image Saving**
+- **Extensive Format Support**
+
 
 ## Installation
 

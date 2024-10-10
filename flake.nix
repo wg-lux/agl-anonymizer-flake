@@ -172,6 +172,7 @@
       propagatedBuildInputs =  with pkgs.python311Packages; [];
 
       nativeBuildInputs = with pkgs; [ 
+        docker
         python311Packages.pip
         python311Packages.setuptools
         python311Packages.torch-bin
@@ -285,10 +286,24 @@ nixosModules = {
       };
     };
 
+    # Enable Docker
     config = lib.mkIf config.services.agl-anonymizer.enable {
+      # Enable Docker service
+      virtualisation.docker.enable = true;
+
+      # Optionally, add user to the Docker group for permission to use Docker
+      users.users.anonymizer.extraGroups = [ "docker" ];  # Replace 'anonymizer' with the correct username
+
+      # Optionally, configure Docker storage driver if needed (e.g., btrfs)
+      # virtualisation.docker.storageDriver = "btrfs";
+
+      # Optionally, enable rootless Docker mode
+      # virtualisation.docker.rootless.enable = true;
+      # virtualisation.docker.rootless.setSocketVariable = true;
+
       systemd.services.agl-anonymizer = {
         description = "AGL Anonymizer service";
-        after = [ "network.target" ];
+        after = [ "network.target" "docker.service" ]; # Ensure Docker starts before the service
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Restart = "always";
@@ -312,6 +327,7 @@ nixosModules = {
     };
   };
 };
+
 
 
   };
